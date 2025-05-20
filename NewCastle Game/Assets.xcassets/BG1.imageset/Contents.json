@@ -1,17 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "BG 1.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "BG 2.jpg",
+      "filename" : "BG 5.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BG 3.jpg",
+      "filename" : "BG 6.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -21,11 +21,12 @@ struct MemoryGameView: View {
         GeometryReader { geometry in
             ZStack {
                 backgroundView
+                    .frame(width: geometry.size.width , height: geometry.size.height)
+
                 mainContent(geometry: geometry)
 
                 overlayViews(g: geometry)
             }
-            .frame(width: geometry.size.width , height: geometry.size.height)
 
         }
         .toolbar(content: {
@@ -49,25 +50,33 @@ struct MemoryGameView: View {
     }
     
     private func mainContent(geometry: GeometryProxy) -> some View {
-        VStack(spacing: 10) {
-            cardsGridView(geometry: geometry)
-                .frame(height: geometry.size.height * 0.6)
+        let isIPad = UIDevice.current.userInterfaceIdiom == .pad
 
+        return VStack{
+            livesView(geometry: geometry)
+            cardsGridView(geometry: geometry)
+                .scaleEffect(isIPad ? 0.8 : 1.0)
         }
-        .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
+        .frame(height: geometry.size.height * 0.9)
+
+
     }
     
-
     
-    
-    private var livesView: some View {
+    private func livesView(geometry: GeometryProxy) -> some View {
         HStack(spacing: 10) {
+            Spacer()
             ForEach(0..<5, id: \.self) { index in
-                Image(systemName: index < remainingAttempts ? "heart.fill" : "heart")
-                    .foregroundColor(index < remainingAttempts ? .white : .gray)
-                    .font(.headline)
+                Image("heart")
+                    .resizable()
+                    .scaledToFit()
+                    .opacity(index < remainingAttempts ? 1.0 : 0.5)
+                    .frame(width: geometry.size.width * 0.08, height: geometry.size.width * 0.08)
             }
+            Spacer()
         }
+        .frame(width: geometry.size.width * 0.5, height: geometry.size.height * 0.2)
+
     }
     
     private func cardsGridView(geometry: GeometryProxy) -> some View {
@@ -197,7 +206,7 @@ struct MemoryGameView: View {
                     
                     
                 }
-                .frame(width: g.size.width * 0.7, height: g.size.height * 0.7)
+                .frame(width: g.size.width * 0.7, height: g.size.height * 0.3)
                 
             }
         }
@@ -265,7 +274,7 @@ struct CardView: View {
                         Image(card.imageName)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: cardSize.width * 0.5)
+                            .frame(width: cardSize.width * 0.35)
                     }
                     .frame(width: cardSize.width, height: cardSize.height)
                     .clipShape(
@@ -282,7 +291,7 @@ struct CardView: View {
             .rotation3DEffect(.degrees(rotation), axis: (x: 0, y: 1, z: 0))
             .scaleEffect(scale)
         }
-        .frame(width: cardSize.width, height: cardSize.height)
+//        .frame(width: cardSize.width, height: cardSize.height)
         .onChange(of: card.isFlipped || card.isMatched) { newValue in
             flipCard(to: newValue)
         }

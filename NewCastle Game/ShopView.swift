@@ -52,7 +52,7 @@ struct ShopView: View {
                                         endPoint: .trailing
                                     )
                                 )
-                                .frame(width: g.size.width * 0.85, height: g.size.height * 0.55)
+                                .frame(width: g.size.width * 0.85, height: g.size.height * 0.6)
                             VStack{
                                 Text("Battle Fields")
                                     .foregroundStyle(.white)
@@ -206,7 +206,7 @@ struct ShopView: View {
                                         endPoint: .trailing
                                     )
                                 )
-                                .frame(width: g.size.width * 0.85, height: g.size.height * 0.55)
+                                .frame(width: g.size.width * 0.85, height: g.size.height * 0.6)
                             VStack{
                                 Text("Knights")
                                     .foregroundStyle(.white)
@@ -396,7 +396,7 @@ struct ShopView: View {
     }
     
     private func currentSkinButtonImage(for id: Int) -> String {
-        if gameData.boughtSkinId.contains(id) {
+        if gameData.boughtSkinId.contains(id) && gameViewModel.skin != "skin\(id)" {
             return "Choose"
         } else if gameViewModel.skin == "skin\(id)" {
             return "Chosen"
@@ -406,9 +406,9 @@ struct ShopView: View {
     }
 
     private func currentBGButtonImage(for id: Int) -> String {
-        if gameData.boughtBackgroundId.contains(id) {
+        if gameData.boughtBackgroundId.contains(id) && gameViewModel.backgroundImage != "BG\(id)" {
             return "Choose"
-        } else if gameViewModel.backgroundImage == "skin\(id)" {
+        } else if gameViewModel.backgroundImage == "BG\(id)" {
             return "Chosen"
         } else{
             return "100"

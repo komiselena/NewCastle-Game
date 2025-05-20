@@ -13,6 +13,7 @@ class GameViewModel: ObservableObject {
     @Published var skin: String = "skin1"
     
     @Published var isGameOver: Bool = false
+    @Published var restartGame: Bool = false
     
     @Published var played10Times: Bool = false
     @Published var collected100Coins: Bool = false

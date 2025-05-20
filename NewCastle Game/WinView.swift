@@ -11,7 +11,7 @@ struct WinView: View {
     @ObservedObject var gameViewModel: GameViewModel
     @ObservedObject var gameData: GameData
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         GeometryReader { g in
             ZStack{
@@ -44,6 +44,9 @@ struct WinView: View {
                     .frame(width: g.size.width * 0.5)
                     Button {
                         gameViewModel.isGameOver = false
+                        dismiss()
+                        gameViewModel.restartGame = true
+                        
                     } label: {
                         ZStack{
                             Capsule()

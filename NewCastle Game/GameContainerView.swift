@@ -114,11 +114,7 @@ struct GameContainerView: View {
 
             }
             .onAppear {
-                let newScene = GameScene(size: UIScreen.main.bounds.size)
-                newScene.scaleMode = .resizeFill
-                newScene.gameViewModel = gameViewModel
-                newScene.gameData = gameData
-                gameScene = newScene
+                setupGameScene()
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
@@ -130,6 +126,14 @@ struct GameContainerView: View {
 
             .navigationBarBackButtonHidden()
     }
+    private func setupGameScene() {
+        let newScene = GameScene(size: UIScreen.main.bounds.size)
+        newScene.scaleMode = .resizeFill
+        newScene.gameViewModel = gameViewModel
+        newScene.gameData = gameData
+        gameScene = newScene
+    }
+
 }
 
 struct ControlButton: View {

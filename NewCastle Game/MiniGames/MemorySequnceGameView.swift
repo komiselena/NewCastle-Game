@@ -102,7 +102,7 @@ struct MemorySequnceGameView: View {
                                         endPoint: .trailing
                                     )
                                 )
-                                .frame(width: g.size.width * 0.7, height: g.size.height * 0.7)
+                                .frame(width: g.size.width * 0.7, height: g.size.height * 0.3)
                             VStack{
                                 Text("Game Over")
                                     .foregroundStyle(.white)
@@ -128,7 +128,7 @@ struct MemorySequnceGameView: View {
                                 
                                 
                             }
-                            .frame(width: g.size.width * 0.7, height: g.size.height * 0.7)
+                            .frame(width: g.size.width * 0.7, height: g.size.height * 0.3)
                             
                         }
                     }

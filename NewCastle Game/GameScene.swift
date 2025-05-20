@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundTiles = [SKSpriteNode]()
     let tileSize = CGSize(width: 1024, height: 1024) // Размер одного тайла фона
     var lastCameraPosition = CGPoint.zero
-    var loadedTilePositions = Set<CGPoint>() // Для отслеживания уже загруженных тайлов
+    var loadedTilePositions = Set<CGPoint>() 
     var backgroundTexture: SKTexture!
     
     var gameViewModel: GameViewModel?
@@ -37,10 +37,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     // Уменьшаем частоту появления врагов
     let enemySpawnInterval: TimeInterval = 2.4 // Было 2.5
-    let maxEnemiesOnScreen = 3 // Максимальное количество врагов на экране
+    let maxEnemiesOnScreen = 4 // Максимальное количество врагов на экране
 
     // Увеличиваем скорость врагов
-    let enemySpeedMultiplier: CGFloat = 2.0 // Было 1.3
+    let enemySpeedMultiplier: CGFloat = 2.5 // Было 1.3
 
     
     let minEnemyDistance: CGFloat = 800  // Минимальная дистанция появления
@@ -74,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var forwardButtonPressed = false
     var backwardButtonPressed = false
 
-    let rubinSpawnInterval: TimeInterval = 4.0 // Интервал появления рубинов
+    let rubinSpawnInterval: TimeInterval = 5.0 // Интервал появления рубинов
     var rubinSpawnTimer: TimeInterval = 0
     let rubinSize: CGFloat = 3.0
     let rubinLifetime: TimeInterval = 30.0
@@ -640,7 +640,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player.position = CGPoint(x: size.width / 2, y: size.height / 2)
         player.zPosition = 10
-        player.setScale(1.5)
+        player.setScale(1.7)
         
         // Начальный поворот - смотрит вправо
         player.zRotation = 0
